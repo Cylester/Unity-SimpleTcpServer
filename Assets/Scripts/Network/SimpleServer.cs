@@ -91,17 +91,11 @@ public class SimpleServer : MonoBehaviour
         {
             string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
             Debug.Log($"Recived message: {message}");
-            OnMessageReceived(message);
 
             byte[] response = Encoding.ASCII.GetBytes("Message received");
             stream.Write(response, 0, response.Length);
         }
 
         tcpClient.Close();
-    }
-
-    private void OnMessageReceived(string message)
-    {
-        Debug.Log($"Processing message: {message}");
     }
 }
